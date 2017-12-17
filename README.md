@@ -255,6 +255,16 @@ data frames;  	names();	              row.names()
 matrix;     	  colnames();	           rownames()  
 
 ### Attributes
+Some examples of R object attributes are:  
+names, dimnames  
+dimensions (e.g. matrices, arrays)  
+class (e.g. integer, numeric)  
+length  
+other user-defined attributes/metadata  
 
 ### Summary
-
+* atomic classes: numeric, logical, character, integer, complex
+* vectors, lists
+* factors
+* missing values
+* data frames and matrices
