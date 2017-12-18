@@ -268,3 +268,61 @@ other user-defined attributes/metadata
 * factors
 * missing values
 * data frames and matrices
+
+## The Importance of Tidy Data
+### The Importance of Tidy Data
+Rural Male Rural Female Urban Male Urban Female  
+50-54       11.7          8.7       15.4          8.4  
+55-59       18.1         11.7       24.3         13.6  
+60-64       26.9         20.3       37.0         19.3  
+65-69       41.0         30.9       54.6         35.1  
+70-74       66.0         54.3       71.1         50.0  
+
+covert the above table to tidy format  
+
+library(tidyr)  
+library(dplyr)  
+
+VADeaths %>%  
+  tbl_df() %>%  
+  mutate(age = row.names(VADeaths)) %>%  
+  gather(key, death_rate, -age) %>%  
+  separate(key, c("urban", "gender"), sep = " ") %>%  
+  mutate(age = factor(age), urban = factor(urban), gender = factor(gender))  
+  
+ " # A tibble: 20 × 4"  
+      age  urban gender death_rate  
+   <fctr> <fctr> <fctr>      <dbl>  
+1   50-54  Rural   Male       11.7  
+2   55-59  Rural   Male       18.1  
+3   60-64  Rural   Male       26.9  
+4   65-69  Rural   Male       41.0  
+5   70-74  Rural   Male       66.0  
+6   50-54  Rural Female        8.7  
+7   55-59  Rural Female       11.7  
+8   60-64  Rural Female       20.3  
+9   65-69  Rural Female       30.9  
+10  70-74  Rural Female       54.3  
+11  50-54  Urban   Male       15.4  
+12  55-59  Urban   Male       24.3  
+13  60-64  Urban   Male       37.0  
+14  65-69  Urban   Male       54.6  
+15  70-74  Urban   Male       71.1  
+16  50-54  Urban Female        8.4  
+17  55-59  Urban Female       13.6  
+18  60-64  Urban Female       19.3  
+19  65-69  Urban Female       35.1  
+20  70-74  Urban Female       50.0  
+ 
+### The "Tidyverse"
+ggplot2: a plotting system based on the grammar of graphics  
+magrittr: defines the %>% operator for chaining functions together in a series of operations on data  
+dplyr: a suite of (fast) functions for working with data frames  
+tidyr: easily tidy data with spread() and gather()functions  
+
+## Reading Tabular Data with the readr Package
+https://www.coursera.org/learn/r-programming-environment/supplement/8RvxL/reading-tabular-data-with-the-readr-package
+
+## Reading Web-Based Data
+https://www.coursera.org/learn/r-programming-environment/supplement/HuaFA/reading-web-based-data
+
